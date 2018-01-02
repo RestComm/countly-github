@@ -1,0 +1,42 @@
+{
+  "name": "githubAnalytics",
+  "title": "GitHub Analytics Plugin",
+  "version": "0.1.0",
+  "description": "A plugin for keeping track of the activity of your GitHub repositories on Count.ly",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": "Yorgos Saslis",
+  "homepage": "https://restcomm.com",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "keywords": [
+    "github",
+    "oss",
+    "analytics",
+    "monitoring",
+    "foss"
+  ],
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-github-webhook": "~1.0.6",
+    "jade": "~1.11.0",
+    "github-api": "~3.0.0",
+    "github-webhook-handler": "~0.7.1",
+    "githubhook": "~1.9.3",
+    "moment": "~2.20.1",
+    "morgan": "~1.9.0",
+    "request": "~2.83.0",
+    "request-promise-native": "~1.0.5",
+    "serve-favicon": "~2.4.5"
+  },
+  "private": true
+}
