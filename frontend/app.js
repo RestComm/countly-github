@@ -3,9 +3,7 @@ var bodyParser = require('body-parser');
 
 const githubWebhookPath = '/github';
 const pluginConfigNamespace = "githubAnalytics";
-var options = { path: githubWebhookPath, secret: '12345' };
 var GithubWebHook = require('express-github-webhook');
-var webhookHandler = GithubWebHook(options);
 var moment = require('moment');
 
 var rp = require('request-promise-native');
@@ -387,6 +385,8 @@ function createCustomEventInBackend(options) {
   plugin.init = function(app, countlyDb, express){
 
     var plugins = require('../../pluginManager.js');
+    var options = { path: githubWebhookPath, secret: plugins.getConfig(pluginConfigNamespace).secret };
+    var webhookHandler = GithubWebHook(options);
 
     // use in your express app
     app.use(bodyParser.json()); // must use bodyParser in express
