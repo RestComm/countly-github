@@ -9,7 +9,6 @@ var webhookHandler = GithubWebHook(options);
 var moment = require('moment');
 
 var rp = require('request-promise-native');
-var plugins = require('../../pluginManager.js');
 
 function preparePostForCommitComments(app_key, repo, data) {
   return {
@@ -386,6 +385,9 @@ function createCustomEventInBackend(options) {
   };
 
   plugin.init = function(app, countlyDb, express){
+
+    var plugins = require('../../pluginManager.js');
+
     // use in your express app
     app.use(bodyParser.json()); // must use bodyParser in express
     app.use(webhookHandler); // use our middleware
