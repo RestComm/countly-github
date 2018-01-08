@@ -268,7 +268,7 @@ describe('Testing GitHub Analytics', function(){
        .end(function(err, res){
          if (err) return done(err);
          var ob = JSON.parse(res.text);
-         ob.should.have.property('error', 'No events found in the request');
+         ob.should.have.property('error', 'No event found in the request');
          setTimeout(done, 100)
        });
    });
