@@ -1,0 +1,29 @@
+= Count.ly Github Plugin
+
+This is a count.ly plugin that incorporates GitHub Webhook Events as Count.ly Custom Events, allowing you to track activity from your GitHub projects in Count.ly.
+
+== Installation
+
+1. Package the folder as a zip file and upload it to your count.ly installation.
+1. Ensure you enable the plugin, from the Count.ly plugins management dashboard
+1. Create a Count.ly application where all your data from GitHub will be inserted under.
+1. Go to the Count.ly `Management` => `Configurations` page and find the GitHub Analytics configuration section. Ensure you insert the application key from the app you just created, and a `secret` you will use so that GitHub Webhook events come signed.
+1. Head over to your GitHub project, `Settings` => `Webhooks` and add a new Webhook.
+1. Ensure you have set the content type to `application/json`.
+1. Insert the `secret` from step 4.
+
+== Supported Events
+
+The below events are currently supported:
+
+* branch or tag creation / deletion: `create` / `delete` events
+*	forks of a project: `fork`
+* issue creation / updates: `issues` events
+* issue comments: `issue_comment`
+* label updates on github issues: `labels`
+* pull request creation / updates: `pull_request`
+* pull request reviews: `pull_request_review`
+* pull request review comments: `pull_request_review_comment`
+* push: `push` events
+* watch / star: `watch` events
+
