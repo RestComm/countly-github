@@ -148,7 +148,7 @@ describe('Testing GitHub Analytics', function(){
       APP_ID = testUtils.get("APP_ID");
       APP_KEY = testUtils.get("APP_KEY");
       request
-        .post('/github?api_key='+API_KEY_ADMIN)
+        .post('/github')
         .set('content-type', 'application/json')
         .set('X-GitHub-Delivery', 'ad2e0de0-f061-11e7-8c28-5237fc4915a1')
         .set('X-GitHub-Event', 'create')
@@ -170,7 +170,7 @@ describe('Testing GitHub Analytics', function(){
       APP_ID = testUtils.get("APP_ID");
       APP_KEY = testUtils.get("APP_KEY");
       request
-        .post('/github?api_key='+API_KEY_ADMIN)
+        .post('/github')
         .set('content-type', 'application/json')
         .set('X-GitHub-Delivery', 'ad2e0de0-f061-11e7-8c28-5237fc4915a1')
         .set('X-GitHub-Event', 'create')
@@ -186,57 +186,13 @@ describe('Testing GitHub Analytics', function(){
     });
   });
 
-  describe('Writing Create Branch with Invalid API Key', function(){
-    it('should fail with 401 unauthorized', function(done){
-      API_KEY_ADMIN = testUtils.get("API_KEY_ADMIN");
-      APP_ID = testUtils.get("APP_ID");
-      APP_KEY = testUtils.get("APP_KEY");
-      request
-        .post('/github?api_key=not_the_correct_key')
-        .set('content-type', 'application/json')
-        .set('X-GitHub-Delivery', 'ad2e0de0-f061-11e7-8c28-5237fc4915a1')
-        .set('X-GitHub-Event', 'create')
-				.set('X-Hub-Signature', 'sha1=c4d750930ee81c8ed70dc30ad478fb8e9a14277b')
-        .send(githubWebhookCreateEventBody())
-        .expect(401)
-        .end(function(err, res){
-          if (err) return done(err);
-          // var ob = JSON.parse(res.text);
-          // ob.should.have.property('success', true);
-          setTimeout(done, 100)
-        });
-    });
-  });
-
-  describe('Writing Create Branch without API Key', function(){
-    it('should fail with bad request', function(done){
-      API_KEY_ADMIN = testUtils.get("API_KEY_ADMIN");
-      APP_ID = testUtils.get("APP_ID");
-      APP_KEY = testUtils.get("APP_KEY");
-      request
-        .post('/github')
-        .set('content-type', 'application/json')
-        .set('X-GitHub-Delivery', 'ad2e0de0-f061-11e7-8c28-5237fc4915a1')
-        .set('X-GitHub-Event', 'create')
-				.set('X-Hub-Signature', 'sha1=c4d750930ee81c8ed70dc30ad478fb8e9a14277b')
-        .send(githubWebhookCreateEventBody())
-        .expect(400)
-        .end(function(err, res){
-          if (err) return done(err);
-          // var ob = JSON.parse(res.text);
-          // ob.should.have.property('success', true);
-          setTimeout(done, 100)
-        });
-    });
-  });
-
 	describe('Writing Create Branch with wrong content-type setting', function(){
    it('should fail with 400 bad request', function(done){
      API_KEY_ADMIN = testUtils.get("API_KEY_ADMIN");
      APP_ID = testUtils.get("APP_ID");
      APP_KEY = testUtils.get("APP_KEY");
      request
-       .post('/github?api_key='+API_KEY_ADMIN)
+       .post('/github')
        .set('content-type', 'application/x-www-form-urlencoded')
        .set('X-GitHub-Delivery', 'ad2e0de0-f061-11e7-8c28-5237fc4915a1')
        .set('X-GitHub-Event', 'create')
@@ -258,7 +214,7 @@ describe('Testing GitHub Analytics', function(){
      APP_ID = testUtils.get("APP_ID");
      APP_KEY = testUtils.get("APP_KEY");
      request
-       .post('/github?api_key='+API_KEY_ADMIN)
+       .post('/github')
        .set('content-type', 'application/json')
        .set('X-GitHub-Delivery', 'ad2e0de0-f061-11e7-8c28-5237fc4915a1')
        // .set('X-GitHub-Event', 'create') // omitting on purpose
