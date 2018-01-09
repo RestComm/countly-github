@@ -390,154 +390,154 @@ function createCustomEventInBackend(options) {
     plugins.loadConfigs(countlyDb, function(){
       options['secret'] = plugins.getConfig(pluginConfigNamespace).github_secret;
 
-        // got secret, let's move on
-        var webhookHandler = GithubWebHook(options);
+      // got secret, let's move on
+      var webhookHandler = GithubWebHook(options);
 
-        // use in your express app
-        app.use(bodyParser.json()); // must use bodyParser in express
-        app.use(webhookHandler); // use our middleware
+      // use in your express app
+      app.use(bodyParser.json()); // must use bodyParser in express
+      app.use(webhookHandler); // use our middleware
 
-        webhookHandler.on('commit_comment', function (repo, data) {
-          console.log("GH commit_comment event for " + repo);
+      webhookHandler.on('commit_comment', function (repo, data) {
+        console.log("GH commit_comment event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
-          console.log("app key: " + app_key);
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        console.log("app key: " + app_key);
 
-          var options = preparePostForCommitComments(app_key, repo, data);
+        var options = preparePostForCommitComments(app_key, repo, data);
 
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('create', function (repo, data) {
-          console.log("GH create event for " + repo);
+      webhookHandler.on('create', function (repo, data) {
+        console.log("GH create event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForCreate(app_key, repo, data);
+        var options = preparePostForCreate(app_key, repo, data);
 
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('delete', function (repo, data) {
-          console.log("GH delete event for " + repo);
+      webhookHandler.on('delete', function (repo, data) {
+        console.log("GH delete event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForDelete(app_key, repo, data);
+        var options = preparePostForDelete(app_key, repo, data);
 
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('fork', function (repo, data) {
-          console.log("GH fork event for " + repo);
+      webhookHandler.on('fork', function (repo, data) {
+        console.log("GH fork event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForFork(app_key, repo, data);
+        var options = preparePostForFork(app_key, repo, data);
 
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('issues', function (repo, data) {
-          console.log("GH issues event for " + repo);
+      webhookHandler.on('issues', function (repo, data) {
+        console.log("GH issues event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForIssues(app_key, repo, data);
+        var options = preparePostForIssues(app_key, repo, data);
 
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('issue_comment', function (repo, data) {
-          console.log("GH issue_comment event for " + repo);
+      webhookHandler.on('issue_comment', function (repo, data) {
+        console.log("GH issue_comment event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForIssueComments(app_key, repo, data);
+        var options = preparePostForIssueComments(app_key, repo, data);
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('label', function (repo, data) {
-          console.log("GH label event for " + repo);
+      webhookHandler.on('label', function (repo, data) {
+        console.log("GH label event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForLabel(app_key, repo, data);
+        var options = preparePostForLabel(app_key, repo, data);
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('pull_request', function (repo, data) {
-          console.log("GH pull_request event for " + repo);
+      webhookHandler.on('pull_request', function (repo, data) {
+        console.log("GH pull_request event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForPullRequest(app_key, repo, data);
+        var options = preparePostForPullRequest(app_key, repo, data);
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('pull_request_review', function (repo, data) {
-          console.log("GH pull_request_review event for " + repo);
+      webhookHandler.on('pull_request_review', function (repo, data) {
+        console.log("GH pull_request_review event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForPullRequestReview(app_key, repo, data);
+        var options = preparePostForPullRequestReview(app_key, repo, data);
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('pull_request_review_comment', function (repo, data) {
-          console.log("GH pull_request_review_comment event for " + repo);
+      webhookHandler.on('pull_request_review_comment', function (repo, data) {
+        console.log("GH pull_request_review_comment event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForPullRequestReviewComment(app_key, repo, data);
+        var options = preparePostForPullRequestReviewComment(app_key, repo, data);
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('push', function (repo, data) {
-          console.log("GH push event for " + repo);
+      webhookHandler.on('push', function (repo, data) {
+        console.log("GH push event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForPush(app_key, repo, data);
+        var options = preparePostForPush(app_key, repo, data);
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('watch', function (repo, data) {
-          console.log("GH watch event for " + repo);
+      webhookHandler.on('watch', function (repo, data) {
+        console.log("GH watch event for " + repo);
 
-          var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
+        var app_key = plugins.getConfig(pluginConfigNamespace).app_key ;
 
-          var options = preparePostForWatch(app_key, repo, data);
+        var options = preparePostForWatch(app_key, repo, data);
 
-          createCustomEventInBackend(options);
+        createCustomEventInBackend(options);
 
-        });
+      });
 
-        webhookHandler.on('error', function (err, req, res) {
-          console.log("error" + err)
-        });
+      webhookHandler.on('error', function (err, req, res) {
+        console.log("error" + err)
+      });
 
     });
 

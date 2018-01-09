@@ -243,6 +243,7 @@ describe('Testing GitHub Analytics', function(){
         });
     });
   });
+
   describe('verify empty browser', function(){
     it('should have no browsers', function(done){
       request
