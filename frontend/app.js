@@ -387,13 +387,10 @@ function createCustomEventInBackend(options) {
     var plugins = require('../../pluginManager.js');
     var options = { path: githubWebhookPath };
 
-    // the plugins.getConfig doesn't load any information at this point in time, so I need to go fetch it myself
-    countlyDb.collection("plugins").findOne({_id:"plugins"}, function(err, res){
-      if(!err) {
-        res = res || {};
-        options['secret'] = res[pluginConfigNamespace].github_secret;
+    plugins.loadConfigs(countlyDb, function(){
+      options['secret'] = plugins.getConfig(pluginConfigNamespace).github_secret;
 
-        // got key, let's move on
+        // got secret, let's move on
         var webhookHandler = GithubWebHook(options);
 
         // use in your express app
@@ -541,11 +538,6 @@ function createCustomEventInBackend(options) {
         webhookHandler.on('error', function (err, req, res) {
           console.log("error" + err)
         });
-
-
-      }else{
-        console.log("error retrieving from db", err);
-      }
 
     });
 
