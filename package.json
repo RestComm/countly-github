@@ -1,7 +1,7 @@
 {
   "name": "githubAnalytics",
   "title": "GitHub Analytics Plugin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A plugin for keeping track of the activity of your GitHub repositories on Count.ly",
   "scripts": {
     "start": "node ./bin/www"

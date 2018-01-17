@@ -14,6 +14,7 @@ function preparePostForCommitComments(app_key, repo, data) {
       app_key: app_key,
       device_id: data.comment.user.id,
       user_details: {
+        name: data.sender.login,
         username: data.comment.user.login,
         picture: data.comment.user.avatar_url,
         custom: data.comment.user
@@ -41,6 +42,7 @@ function preparePostForCreate(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -70,6 +72,7 @@ function preparePostForDelete(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -99,6 +102,7 @@ function preparePostForFork(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -128,6 +132,7 @@ function preparePostForIssues(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -158,6 +163,7 @@ function preparePostForIssueComments(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -187,6 +193,7 @@ function preparePostForLabel(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -217,6 +224,7 @@ function preparePostForPullRequest(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -249,6 +257,7 @@ function preparePostForPullRequestReview(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -280,6 +289,7 @@ function preparePostForPullRequestReviewComment(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -310,6 +320,7 @@ function preparePostForPush(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
@@ -339,6 +350,7 @@ function preparePostForWatch(app_key, repo, data) {
       app_key: app_key,
       device_id: ""+data.sender.id,
       user_details: {
+        name: data.sender.login,
         username: data.sender.login,
         picture: data.sender.avatar_url,
         custom: data.sender
